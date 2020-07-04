@@ -1,0 +1,98 @@
+﻿@model VirtualMarketPlace.Models.ContactEmailReturn
+
+@{
+    ViewData["Title"] = "Contact";
+}
+<main role="main">
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-6">
+                <h4 class="subtitle-doc">
+                    # Outros contatos
+                    <a href="#" data-html="code_desc_simple" class="showcode">[code]</a>
+                </h4>
+                <div id="code_desc_simple">
+                    <div class="box">
+                        <dl>
+                            <dt>Devolução/Garantia: </dt>
+                            <dd>devolucao@lojavirtual.com.br</dd>
+                        </dl>
+                        <dl>
+                            <dt>Televendas: </dt>
+                            <dd>(61) 4000-2000</dd>
+                        </dl>
+                        <dl>
+                            <dt>SAC:</dt>
+                            <dd>sac@lojavirtual.com.br</dd>
+                        </dl>
+                    </div>
+                </div>
+            </aside>
+            <aside class="col-sm-6">
+
+                <h4 class="subtitle-doc">
+                    # Contact
+                </h4>
+                <div id="contact">
+
+                    <article class="card">
+                        <div class="card-body p-5">
+                            @{
+                                if (!(Model is null))
+                                {
+                                    if (Model.IsMessageSent)
+                                    {
+                                        <p class="alert alert-success">@Model.ReturnMessage </p>
+                                    }
+                                    else if (Model.HasException)
+                                    {
+                                        <p class="alert alert-danger">@Model.ReturnMessage </p>
+                                    }
+                                }
+                            }
+                            <form role="form" method="post" action="/Home/SendContact">
+                                <div class="form-group">
+                                    <label for="Name">Name:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="Name" name="Name" placeholder=""
+                                               required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Email">E-mail:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-at"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="Email" name="Email" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="Message"><span class="hidden-xs">Message:</span> </label>
+                                            <div class="form-inline">
+                                                <textarea class="form-control" name="Message" id="Message" style="width:100%"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="subscribe btn btn-primary btn-block" type="submit"> Send </button>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+</main>
+

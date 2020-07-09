@@ -44,11 +44,11 @@
                                 {
                                     if (Model.IsMessageSent)
                                     {
-                                        <p class="alert alert-success">@Model.ReturnMessage </p>
+                                        <p class="alert alert-success">@Html.Raw(Model.ReturnMessage) </p>
                                     }
                                     else if (Model.HasException)
                                     {
-                                        <p class="alert alert-danger">@Model.ReturnMessage </p>
+                                        <p class="alert alert-danger">@Html.Raw(Model.ReturnMessage) </p>
                                     }
                                 }
                             }
@@ -60,7 +60,7 @@
                                             <span class="input-group-text"><i class="fa fa-user"></i></span>
                                         </div>
                                         <input type="text" class="form-control" id="Name" name="Name" placeholder=""
-                                               required="">
+                                               required="" value="@Model?.Contact.Name">
                                     </div>
                                 </div>
 
@@ -70,7 +70,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-at"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" id="Email" name="Email" placeholder="">
+                                        <input type="text" class="form-control" value="@Model?.Contact.Email" id="Email" name="Email" placeholder="">
                                     </div>
                                 </div>
 
@@ -79,7 +79,7 @@
                                         <div class="form-group">
                                             <label for="Message"><span class="hidden-xs">Message:</span> </label>
                                             <div class="form-inline">
-                                                <textarea class="form-control" name="Message" id="Message" style="width:100%"></textarea>
+                                                <textarea class="form-control" name="Message" id="Message" style="width:100%">@Model?.Contact.Message</textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model VirtualMarketPlace.Models.NewsletterEmail
+
+@{
     ViewData["Title"] = "Index";
 }
 
@@ -149,7 +151,44 @@
             </div>
         </div>
     </div>
-
-
 </main>
 
+
+@using (Html.BeginForm(null, null, null, FormMethod.Post, false, new { @action = @Url.Action("index", "home") + "#newsletterForm" }))
+{
+    <div class="container" id="newsletterForm">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 ">
+                @if (TempData["MSG_S"] != null)
+                {
+                    <p class="alert alert-success">
+                        <span class="fa fa-check ">
+                        </span>
+                        @TempData["MSG_S"]
+                    </p>
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 offset-sm-2">
+                <div class="form-group">
+                    <label class="font-weight-bold" for="Name">Register your email to receive our newsletter:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        </div>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <span class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <br />
+                <button class="subscribe btn btn-primary btn-block marginInputButton " type="submit"> <span class="fa fa-paper-plane"></span>  Send </button>
+            </div>
+        </div>
+    </div>
+}

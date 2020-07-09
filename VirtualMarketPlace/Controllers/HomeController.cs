@@ -5,14 +5,39 @@ using VirtualMarketPlace.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Text;
+using VirtualMarketPlace.Database;
 
 namespace VirtualMarketPlace.Controllers
 {
     public class HomeController : Controller
     {
+        private VirtualMarketPlaceContext _databaseContext;
+        public HomeController(VirtualMarketPlaceContext databaseContext)
+        {
+            _databaseContext = databaseContext;
+        }
+
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Index([FromForm] NewsletterEmail newsletter)
+        {
+            if (ModelState.IsValid)
+            {
+                _databaseContext.NewsletterEmails.Add(newsletter);
+                _databaseContext.SaveChanges();
+
+                TempData["MSG_S"] = "E-mail sucessefully registered! Now You'll receive our newsletter!";
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View();
+            }
         }
         public IActionResult Contact()
         {
@@ -53,9 +78,10 @@ namespace VirtualMarketPlace.Controllers
                     StringBuilder sbMessages = new StringBuilder();
                     foreach (var validationMessage in lstMessages)
                     {
-                        sbMessages.Append(validationMessage.ErrorMessage);
+                        sbMessages.Append(validationMessage.ErrorMessage + "<br/>");
                     }
 
+                    returnContact.Contact = contact;
                     returnContact.IsMessageSent = false;
                     returnContact.HasException = true;
                     returnContact.ReturnMessage = sbMessages.ToString();

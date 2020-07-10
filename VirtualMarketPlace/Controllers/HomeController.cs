@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using VirtualMarketPlace.Libraries.Email;
-using VirtualMarketPlace.Models;
-using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using VirtualMarketPlace.Database;
+using VirtualMarketPlace.Models;
 
 namespace VirtualMarketPlace.Controllers
 {
@@ -48,6 +47,22 @@ namespace VirtualMarketPlace.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult CreateUser([FromForm]Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                _databaseContext.Add(client);
+                _databaseContext.SaveChanges();
+
+                TempData["MSG_S"] = "The register was realized!";
+
+                return RedirectToAction(nameof(CreateUser));
+            }
+
+            return View();
+        }
+        [HttpGet]
         public IActionResult CreateUser()
         {
             return View();

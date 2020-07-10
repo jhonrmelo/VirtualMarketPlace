@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VirtualMarketPlace.Database;
 using VirtualMarketPlace.Helpers;
+using VirtualMarketPlace.Repositories;
+using VirtualMarketPlace.Repositories.Repository;
 
 namespace LojaVirtual
 {
@@ -29,7 +31,7 @@ namespace LojaVirtual
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddScoped<IClientRepository, ClientRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<VirtualMarketPlaceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

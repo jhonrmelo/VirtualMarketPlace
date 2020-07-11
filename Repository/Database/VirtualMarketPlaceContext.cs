@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using VirtualMarketPlace.Models;
+﻿
+using Microsoft.EntityFrameworkCore;
+using VirtualMarketPlace.Domain.Models;
 
-namespace VirtualMarketPlace.Database
+namespace VirtualMarketPlace.Repository.Database
 {
     public class VirtualMarketPlaceContext : DbContext
     {

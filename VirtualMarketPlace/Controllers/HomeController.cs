@@ -1,19 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Service.Newsletter;
+using Service.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using VirtualMarketPlace.Database;
+using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Models;
 
 namespace VirtualMarketPlace.Controllers
 {
     public class HomeController : Controller
     {
-        private VirtualMarketPlaceContext _databaseContext;
-        public HomeController(VirtualMarketPlaceContext databaseContext)
+        private IClientService _clienteService;
+        private INewsletterService _newsletterService;
+        public HomeController(IClientService clientService, INewsletterService newsletterService)
         {
-            _databaseContext = databaseContext;
+            _clienteService = clientService;
+            _newsletterService = newsletterService;
         }
 
         [HttpGet]
@@ -26,8 +30,7 @@ namespace VirtualMarketPlace.Controllers
         {
             if (ModelState.IsValid)
             {
-                _databaseContext.NewsletterEmails.Add(newsletter);
-                _databaseContext.SaveChanges();
+                _newsletterService.Create(newsletter);
 
                 TempData["MSG_S"] = "E-mail sucessefully registered! Now You'll receive our newsletter!";
 
@@ -52,8 +55,7 @@ namespace VirtualMarketPlace.Controllers
         {
             if (ModelState.IsValid)
             {
-                _databaseContext.Add(client);
-                _databaseContext.SaveChanges();
+                _clienteService.Create(client);
 
                 TempData["MSG_S"] = "The register was realized!";
 

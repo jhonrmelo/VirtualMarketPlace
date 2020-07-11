@@ -1,4 +1,4 @@
-﻿namespace LojaVirtual.Models
+﻿namespace VirtualMarketPlace.Domain.Models
 {
     public class Product
     {

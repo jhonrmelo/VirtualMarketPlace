@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VirtualMarketPlace.Database;
+using VirtualMarketPlace.Repository.Database;
 
 namespace VirtualMarketPlace.Migrations
 {

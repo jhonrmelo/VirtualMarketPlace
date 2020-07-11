@@ -1,5 +1,6 @@
 ﻿using LojaVirtual.Models;
 using Microsoft.AspNetCore.Mvc;
+using VirtualMarketPlace.Domain.Models;
 
 namespace LojaVirtual.Controllers
 {

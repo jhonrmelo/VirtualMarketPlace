@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using VirtualMarketPlace.Database;
-using VirtualMarketPlace.Models;
+
+using VirtualMarketPlace.Domain.Models;
+using VirtualMarketPlace.Repository.Database;
 
 namespace VirtualMarketPlace.Repositories.Repository
 {
@@ -20,10 +20,8 @@ namespace VirtualMarketPlace.Repositories.Repository
             _database.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Client client)
         {
-            Client client = GetClient(id);
-
             _database.Remove(client);
             _database.SaveChanges();
         }

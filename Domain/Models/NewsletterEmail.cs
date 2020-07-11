@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using VirtualMarketPlace.Helpers.LanguageHelpers;
+using Helpers.LanguageHelpers;
 
-namespace VirtualMarketPlace.Models
+namespace VirtualMarketPlace.Domain.Models
 {
     public class NewsletterEmail
     {

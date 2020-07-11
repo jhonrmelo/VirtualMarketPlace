@@ -1,6 +1,6 @@
-﻿using System.Net;
+﻿using Helpers;
+using System.Net;
 using System.Net.Mail;
-using VirtualMarketPlace.Helpers;
 using VirtualMarketPlace.Models;
 
 namespace VirtualMarketPlace.Libraries.Email

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using VirtualMarketPlace.Models;
+using VirtualMarketPlace.Domain.Models;
 
-namespace VirtualMarketPlace.Repositories
+namespace Service.User
 {
-    interface IClientRepository
+    public interface IClientService
     {
         Client Login(string Email, string Password);
         void Create(Client client);

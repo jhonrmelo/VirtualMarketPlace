@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VirtualMarketPlace.Helpers.LanguageHelpers {
+namespace Helpers.LanguageHelpers {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace VirtualMarketPlace.Helpers.LanguageHelpers {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VirtualMarketPlace.Helpers.LanguageHelpers.Message", typeof(Message).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Helpers.LanguageHelpers.Message", typeof(Message).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

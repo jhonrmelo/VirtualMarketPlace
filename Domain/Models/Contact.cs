@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using VirtualMarketPlace.Helpers.LanguageHelpers;
+﻿using Helpers.LanguageHelpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace VirtualMarketPlace.Models
 {

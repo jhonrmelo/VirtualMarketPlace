@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMarketPlace", "VirtualMarketPlace.csproj", "{B9B08B8C-F11B-4D2E-948E-7894C8B705E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMarketPlace", "VirtualMarketPlace.csproj", "{B9B08B8C-F11B-4D2E-948E-7894C8B705E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{AADF5416-4248-42D0-9434-4DCE11624A53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "..\Service\Service.csproj", "{B35867AC-E77B-4A36-A67E-EEFE7C745BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "..\Repository\Repository.csproj", "{13EA1531-BBBA-4794-B656-00229A4E29DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "..\Helpers\Helpers.csproj", "{3F8B1A76-20C1-4759-8814-B464421F4E3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{B9B08B8C-F11B-4D2E-948E-7894C8B705E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9B08B8C-F11B-4D2E-948E-7894C8B705E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9B08B8C-F11B-4D2E-948E-7894C8B705E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AADF5416-4248-42D0-9434-4DCE11624A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AADF5416-4248-42D0-9434-4DCE11624A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AADF5416-4248-42D0-9434-4DCE11624A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AADF5416-4248-42D0-9434-4DCE11624A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B35867AC-E77B-4A36-A67E-EEFE7C745BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35867AC-E77B-4A36-A67E-EEFE7C745BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35867AC-E77B-4A36-A67E-EEFE7C745BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35867AC-E77B-4A36-A67E-EEFE7C745BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13EA1531-BBBA-4794-B656-00229A4E29DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13EA1531-BBBA-4794-B656-00229A4E29DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EA1531-BBBA-4794-B656-00229A4E29DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13EA1531-BBBA-4794-B656-00229A4E29DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F8B1A76-20C1-4759-8814-B464421F4E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8B1A76-20C1-4759-8814-B464421F4E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8B1A76-20C1-4759-8814-B464421F4E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8B1A76-20C1-4759-8814-B464421F4E3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

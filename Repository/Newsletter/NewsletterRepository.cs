@@ -1,4 +1,6 @@
-﻿using VirtualMarketPlace.Domain.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Repository.Database;
 
 namespace Repository.Newsletter
@@ -15,6 +17,11 @@ namespace Repository.Newsletter
         {
             _database.Add(newsletterEmail);
             _database.SaveChanges();
+        }
+
+        public List<NewsletterEmail> GetNewsletterEmails()
+        {
+            return _database.NewsletterEmails.ToList();
         }
     }
 }

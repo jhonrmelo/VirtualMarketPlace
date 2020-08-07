@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Helpers;
+using Domain.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using Service.Login.Clients;
 using Service.Session;
+
 using System;
 using System.Linq;
 using System.Reflection;
-using VirtualMarketPlace.Repositories;
-using VirtualMarketPlace.Repositories.Repository;
+
 using VirtualMarketPlace.Repository.Database;
 
 namespace LojaVirtual
@@ -39,11 +41,15 @@ namespace LojaVirtual
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddHttpContextAccessor();
-            services.AddMemoryCache();
-            services.AddSession(options =>
-            {
 
-            });
+            #region DI Scope for Attributtes
+            services.AddScoped<ClientLoginService>();
+            services.AddScoped<CollaboratorModel>();
+            #endregion
+
+            services.AddMemoryCache();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
             services.AddScoped<SessionHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<VirtualMarketPlaceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -51,6 +57,7 @@ namespace LojaVirtual
             var autofacBuilder = new ContainerBuilder();
 
             autofacBuilder.Populate(services);
+
             //AutoWire Repository Class
             autofacBuilder.RegisterAssemblyTypes(Assembly.Load("Repository")).As(T => T.GetInterfaces().Where(i => i.Name == "I" + T.Name));
             //AutoWire Service Class
@@ -85,8 +92,12 @@ namespace LojaVirtual
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                         name: "areas",
+                         template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                         name: "default",
+                         template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

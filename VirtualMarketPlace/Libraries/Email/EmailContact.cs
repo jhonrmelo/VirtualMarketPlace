@@ -7,7 +7,7 @@ namespace VirtualMarketPlace.Libraries.Email
 {
     public class EmailContact
     {
-        public static void SendContactByEmail(Contact contact)
+        public static void SendContactByEmail(ContactViewModel contact)
         {
             //This is your personal password, if you change it dont put in github
             string password = "";
@@ -35,7 +35,7 @@ namespace VirtualMarketPlace.Libraries.Email
 
         }
 
-        private static string _getMessageBody(Contact contact)
+        private static string _getMessageBody(ContactViewModel contact)
         {
             string messageBody = $@"<h2>Contact - Market Place </h2>
                                      <b>Name: </b> {contact.Name}  <br/>

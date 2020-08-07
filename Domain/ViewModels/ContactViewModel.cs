@@ -1,9 +1,9 @@
 ﻿using Helpers.LanguageHelpers;
 using System.ComponentModel.DataAnnotations;
 
-namespace VirtualMarketPlace.Models
+namespace VirtualMarketPlace.ViewModels
 {
-    public class Contact
+    public class ContactViewModel
     {
         [Required(ErrorMessageResourceType = typeof(Message), ErrorMessageResourceName = "MSG_E001")]
         [MinLength(4, ErrorMessageResourceType = typeof(Message), ErrorMessageResourceName = "MSG_E002")]

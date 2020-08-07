@@ -12,7 +12,7 @@ namespace Service.User
         {
             _clientRepository = clientRepository;
         }
-        public void Create(Client client)
+        public void Create(ClientModel client)
         {
             _clientRepository.Create(client);
         }
@@ -20,26 +20,26 @@ namespace Service.User
         public void Delete(int id)
         {
 
-            Client client = GetClient(id);
+            ClientModel client = GetClient(id);
             _clientRepository.Delete(client);
         }
 
-        public Client GetClient(int id)
+        public ClientModel GetClient(int id)
         {
             return _clientRepository.GetClient(id);
         }
 
-        public List<Client> GetClients()
+        public List<ClientModel> GetClients()
         {
             return _clientRepository.GetClients();
         }
 
-        public Client Login(string Email, string Password)
+        public ClientModel Login(string Email, string Password)
         {
             return _clientRepository.Login(Email, Password);
         }
 
-        public void Update(Client client)
+        public void Update(ClientModel client)
         {
             _clientRepository.Update(client);
         }

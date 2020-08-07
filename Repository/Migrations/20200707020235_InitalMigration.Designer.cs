@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VirtualMarketPlace.Repository.Database;
 
-namespace VirtualMarketPlace.Migrations
+namespace VirtualMarketPlace.Repository.Migrations
 {
     [DbContext(typeof(VirtualMarketPlaceContext))]
-    [Migration("20200708005026_newsletterEmail")]
-    partial class newsletterEmail
+    [Migration("20200707020235_InitalMigration")]
+    partial class InitalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,19 +44,6 @@ namespace VirtualMarketPlace.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
-                });
-
-            modelBuilder.Entity("VirtualMarketPlace.Models.NewsletterEmail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NewsletterEmails");
                 });
 #pragma warning restore 612, 618
         }

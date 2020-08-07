@@ -13,36 +13,36 @@ namespace VirtualMarketPlace.Repositories.Repository
         {
             _database = database;
         }
-        public void Create(Client client)
+        public void Create(ClientModel client)
         {
             _database.Add(client);
             _database.SaveChanges();
         }
 
-        public void Delete(Client client)
+        public void Delete(ClientModel client)
         {
             _database.Remove(client);
             _database.SaveChanges();
         }
 
-        public Client GetClient(int id)
+        public ClientModel GetClient(int id)
         {
             return _database.Clients.Find(id);
         }
 
-        public List<Client> GetClients()
+        public List<ClientModel> GetClients()
         {
             return _database.Clients.ToList();
         }
 
-        public Client Login(string Email, string Password)
+        public ClientModel Login(string Email, string Password)
         {
             return _database.Clients.Where(client => client.Email == Email
                                                   && client.Password == Password)
                                                   .FirstOrDefault();
         }
 
-        public void Update(Client client)
+        public void Update(ClientModel client)
         {
             _database.Update(client);
             _database.SaveChanges();

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace VirtualMarketPlace.Migrations
+namespace VirtualMarketPlace.Repository.Migrations
 {
     public partial class newsletterEmail : Migration
     {

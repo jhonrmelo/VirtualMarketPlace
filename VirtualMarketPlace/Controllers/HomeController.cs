@@ -1,7 +1,11 @@
-﻿using Domain.ViewModels;
+﻿
+using Domain.ViewModels;
+
 using Microsoft.AspNetCore.Mvc;
-using Service.Login;
+
+using Service.Login.Clients;
 using Service.Newsletter;
+using Service.PipelineFilters;
 using Service.User;
 using System;
 using System.Collections.Generic;
@@ -10,6 +14,7 @@ using System.Text;
 using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Domain.ViewModels;
 using VirtualMarketPlace.Models;
+using VirtualMarketPlace.ViewModels;
 
 namespace VirtualMarketPlace.Controllers
 {
@@ -17,8 +22,9 @@ namespace VirtualMarketPlace.Controllers
     {
         private IClientService _clienteService;
         private INewsletterService _newsletterService;
-        private ILoginService _loginservice;
-        public HomeController(IClientService clientService, INewsletterService newsletterService, ILoginService loginService)
+        private IClientLoginService _loginservice;
+
+        public HomeController(IClientService clientService, INewsletterService newsletterService, IClientLoginService loginService)
         {
             _clienteService = clientService;
             _newsletterService = newsletterService;
@@ -52,16 +58,10 @@ namespace VirtualMarketPlace.Controllers
         }
 
         [HttpGet]
+        [ClientAuthorization]
         public IActionResult ControlPanel()
         {
-            Client client = _loginservice.GetClient();
-
-            if (!(client is null))
-            {
-                return new ContentResult() { Content = $"Has Access => {client.Id} - {client.Email}" };
-            }
-
-            return new ContentResult() { Content = $"You don't have access" };
+            return new ContentResult() { Content = "This is the controll panel" };
         }
 
         [HttpGet]
@@ -72,7 +72,7 @@ namespace VirtualMarketPlace.Controllers
         [HttpPost]
         public IActionResult Login([FromForm]LoginViewModel login)
         {
-            Client loggedClient = _clienteService.Login(login.Email, login.Password);
+            ClientModel loggedClient = _clienteService.Login(login.Email, login.Password);
 
             if (!(loggedClient is null))
             {
@@ -87,7 +87,7 @@ namespace VirtualMarketPlace.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromForm]Client client)
+        public IActionResult CreateUser([FromForm]ClientModel client)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace VirtualMarketPlace.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SendContact(Contact contact)
+        public IActionResult SendContact(ContactViewModel contact)
         {
             try
             {

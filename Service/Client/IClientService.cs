@@ -5,11 +5,11 @@ namespace Service.User
 {
     public interface IClientService
     {
-        Client Login(string Email, string Password);
-        void Create(Client client);
-        void Update(Client client);
+        ClientModel Login(string Email, string Password);
+        void Create(ClientModel client);
+        void Update(ClientModel client);
         void Delete(int id);
-        Client GetClient(int id);
-        List<Client> GetClients();
+        ClientModel GetClient(int id);
+        List<ClientModel> GetClients();
     }
 }

@@ -6,11 +6,11 @@ namespace VirtualMarketPlace.Repositories
 {
     public interface IClientRepository
     {
-        Client Login(string Email, string Password);
-        void Create(Client client);
-        void Update(Client client);
-        void Delete(Client client);
-        Client GetClient(int id);
-        List<Client> GetClients();
+        ClientModel Login(string Email, string Password);
+        void Create(ClientModel client);
+        void Update(ClientModel client);
+        void Delete(ClientModel client);
+        ClientModel GetClient(int id);
+        List<ClientModel> GetClients();
     }
 }

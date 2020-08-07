@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 namespace VirtualMarketPlace.Domain.Models
 {
-    public class Client
+    public class ClientModel
     {
         public int Id { get; set; }
         [Required(ErrorMessageResourceType = typeof(Message), ErrorMessageResourceName = "MSG_E001")]

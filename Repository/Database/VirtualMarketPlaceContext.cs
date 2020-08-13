@@ -10,9 +10,10 @@ namespace VirtualMarketPlace.Repository.Database
         public VirtualMarketPlaceContext(DbContextOptions<VirtualMarketPlaceContext> options) : base(options) { }
 
         public DbSet<ClientModel> Clients { get; set; }
-        public DbSet<NewsletterEmail> NewsletterEmails { get; set; }
+        public DbSet<NewsletterEmailModel> NewsletterEmails { get; set; }
         public DbSet<CollaboratorTypeModel> CollaboratorTypes { get; set; }
         public DbSet<CollaboratorModel> Collaborators { get; set; }
+        public DbSet<CategoryModel> Categories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

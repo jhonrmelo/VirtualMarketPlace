@@ -1,6 +1,9 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain.Models
 {
+    [Table("Collaborator")]
     public class CollaboratorModel
     {
         public int Id { get; set; }

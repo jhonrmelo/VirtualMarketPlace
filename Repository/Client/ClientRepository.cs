@@ -1,28 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using Repository.Database.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Repository.Database;
 
 namespace VirtualMarketPlace.Repositories.Repository
 {
-    public class ClientRepository : IClientRepository
+    public class ClientRepository : GenericRepository<ClientModel>, IClientRepository
     {
         private VirtualMarketPlaceContext _database;
 
-        public ClientRepository(VirtualMarketPlaceContext database)
+        public ClientRepository(VirtualMarketPlaceContext database) : base(database)
         {
             _database = database;
-        }
-        public void Create(ClientModel client)
-        {
-            _database.Add(client);
-            _database.SaveChanges();
-        }
-
-        public void Delete(ClientModel client)
-        {
-            _database.Remove(client);
-            _database.SaveChanges();
         }
 
         public ClientModel GetClient(int id)
@@ -42,10 +32,5 @@ namespace VirtualMarketPlace.Repositories.Repository
                                                   .FirstOrDefault();
         }
 
-        public void Update(ClientModel client)
-        {
-            _database.Update(client);
-            _database.SaveChanges();
-        }
     }
 }

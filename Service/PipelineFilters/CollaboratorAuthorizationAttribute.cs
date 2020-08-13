@@ -17,7 +17,7 @@ namespace Service.PipelineFilters
 
             if (client is null)
             {
-                context.Result = new ContentResult() { Content = "You don't have access" };
+                context.Result = new RedirectToActionResult("Login", "CollaboratorHome", null);
             }
         }
     }

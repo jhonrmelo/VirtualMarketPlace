@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Repository.Database.Generic;
+using System.Collections.Generic;
 using CollaboratorModel = Domain.Models.CollaboratorModel;
 
 namespace Repository.Collaborator
 {
-    public interface ICollaboratorRepository
+    public interface ICollaboratorRepository : IGenericRepository<CollaboratorModel>
     {
         CollaboratorModel Login(string Email, string Password);
-        void Create(CollaboratorModel collaborator);
-        void Update(CollaboratorModel collaborator);
-        void Delete(CollaboratorModel collaborator);
         CollaboratorModel GetCollaborator(int id);
         List<CollaboratorModel> GetCollaborators();
     }

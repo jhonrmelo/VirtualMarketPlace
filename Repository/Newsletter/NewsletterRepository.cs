@@ -13,13 +13,13 @@ namespace Repository.Newsletter
             _database = database;
         }
 
-        public void Create(NewsletterEmail newsletterEmail)
+        public void Create(NewsletterEmailModel newsletterEmail)
         {
             _database.Add(newsletterEmail);
             _database.SaveChanges();
         }
 
-        public List<NewsletterEmail> GetNewsletterEmails()
+        public List<NewsletterEmailModel> GetNewsletterEmails()
         {
             return _database.NewsletterEmails.ToList();
         }

@@ -37,7 +37,7 @@ namespace VirtualMarketPlace.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index([FromForm] NewsletterEmail newsletter)
+        public IActionResult Index([FromForm] NewsletterEmailModel newsletter)
         {
             if (ModelState.IsValid)
             {

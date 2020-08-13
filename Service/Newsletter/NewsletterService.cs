@@ -12,7 +12,7 @@ namespace Service.Newsletter
             _newsletterRepository = newsletterRepository;
         }
 
-        public void Create(NewsletterEmail newsletterEmail)
+        public void Create(NewsletterEmailModel newsletterEmail)
         {
             _newsletterRepository.Create(newsletterEmail);
         }

@@ -1,8 +1,11 @@
 ﻿using Helpers.LanguageHelpers;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace VirtualMarketPlace.Domain.Models
 {
+    [Table("Client")]
     public class ClientModel
     {
         public int Id { get; set; }

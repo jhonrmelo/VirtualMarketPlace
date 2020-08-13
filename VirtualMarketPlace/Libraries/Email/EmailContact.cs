@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using VirtualMarketPlace.Models;
+using VirtualMarketPlace.ViewModels;
 
 namespace VirtualMarketPlace.Libraries.Email
 {

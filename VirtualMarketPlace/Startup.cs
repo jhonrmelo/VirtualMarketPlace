@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using Service.Login.Clients;
+using Service.Login.Collaborators;
 using Service.Session;
 
 using System;
@@ -44,7 +45,7 @@ namespace LojaVirtual
 
             #region DI Scope for Attributtes
             services.AddScoped<ClientLoginService>();
-            services.AddScoped<CollaboratorModel>();
+            services.AddScoped<CollaboratorLoginService>();
             #endregion
 
             services.AddMemoryCache();

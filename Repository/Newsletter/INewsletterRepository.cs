@@ -7,7 +7,7 @@ namespace Repository.Newsletter
 {
     public interface INewsletterRepository
     {
-        void Create(NewsletterEmail newsletterEmail);
-        List<NewsletterEmail> GetNewsletterEmails();
+        void Create(NewsletterEmailModel newsletterEmail);
+        List<NewsletterEmailModel> GetNewsletterEmails();
     }
 }

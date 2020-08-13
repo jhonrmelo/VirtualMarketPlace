@@ -4,6 +4,6 @@ namespace Service.Newsletter
 {
     public interface INewsletterService
     {
-        void Create(NewsletterEmail newsletterEmail);
+        void Create(NewsletterEmailModel newsletterEmail);
     }
 }

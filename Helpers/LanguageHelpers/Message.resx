@@ -129,4 +129,7 @@
   <data name="MSG_E004" xml:space="preserve">
     <value>The field {0} is not valid</value>
   </data>
+  <data name="MSG_E005" xml:space="preserve">
+    <value>The Password and the confirmed password aren't equals</value>
+  </data>
 </root>

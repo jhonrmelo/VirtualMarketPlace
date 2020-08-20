@@ -1,5 +1,7 @@
-﻿using Repository.Collaborator;
+﻿using Domain.Models;
+using Repository.Collaborator;
 using System.Collections.Generic;
+using X.PagedList;
 using CollaboratorModel = Domain.Models.CollaboratorModel;
 
 namespace Service.Collaborator
@@ -34,6 +36,13 @@ namespace Service.Collaborator
             return _collaboratorRepository.GetCollaborators();
         }
 
+        public IPagedList<CollaboratorModel> GetPagedCollaborators(int? page)
+        {
+            int indexPage = page ?? 1;
+            return _collaboratorRepository.GetPagedCollaborators(indexPage);
+
+        }
+
         public CollaboratorModel Login(string Email, string Password)
         {
             return _collaboratorRepository.Login(Email, Password);
@@ -42,6 +51,10 @@ namespace Service.Collaborator
         public void Update(CollaboratorModel collaborator)
         {
             _collaboratorRepository.Update(collaborator);
+        }
+        public IEnumerable<CollaboratorTypeModel> GetCollaboratorTypes()
+        {
+            return _collaboratorRepository.GetCollaboratorTypes();
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Repository.Database.Generic;
+﻿using Domain.Models;
+using Repository.Database.Generic;
 using System.Collections.Generic;
+using X.PagedList;
 using CollaboratorModel = Domain.Models.CollaboratorModel;
 
 namespace Repository.Collaborator
@@ -9,5 +11,7 @@ namespace Repository.Collaborator
         CollaboratorModel Login(string Email, string Password);
         CollaboratorModel GetCollaborator(int id);
         List<CollaboratorModel> GetCollaborators();
+        IPagedList<CollaboratorModel> GetPagedCollaborators(int page);
+        IEnumerable<CollaboratorTypeModel> GetCollaboratorTypes();
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Domain.Models;
+using System.Collections.Generic;
+using X.PagedList;
 using CollaboratorModel = Domain.Models.CollaboratorModel;
 
 namespace Service.Collaborator
@@ -11,5 +13,7 @@ namespace Service.Collaborator
         void Delete(int id);
         CollaboratorModel GetCollaborator(int id);
         List<CollaboratorModel> GetCollaborators();
+        IPagedList<CollaboratorModel> GetPagedCollaborators(int? page);
+        IEnumerable<CollaboratorTypeModel> GetCollaboratorTypes();
     }
 }

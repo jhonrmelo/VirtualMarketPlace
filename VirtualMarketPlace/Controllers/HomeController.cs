@@ -1,8 +1,7 @@
 ﻿
 using Domain.ViewModels;
-
 using Microsoft.AspNetCore.Mvc;
-
+using Service.Email;
 using Service.Login.Clients;
 using Service.Newsletter;
 using Service.PipelineFilters;
@@ -14,6 +13,7 @@ using System.Text;
 using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Domain.ViewModels;
 using VirtualMarketPlace.Models;
+using VirtualMarketPlace.Service.Email;
 using VirtualMarketPlace.ViewModels;
 
 namespace VirtualMarketPlace.Controllers
@@ -23,12 +23,13 @@ namespace VirtualMarketPlace.Controllers
         private IClientService _clienteService;
         private INewsletterService _newsletterService;
         private IClientLoginService _loginservice;
-
-        public HomeController(IClientService clientService, INewsletterService newsletterService, IClientLoginService loginService)
+        private IEmailService _emailService;
+        public HomeController(IClientService clientService, INewsletterService newsletterService, IClientLoginService loginService, IEmailService emailService)
         {
             _clienteService = clientService;
             _newsletterService = newsletterService;
             _loginservice = loginService;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -114,7 +115,7 @@ namespace VirtualMarketPlace.Controllers
         {
             try
             {
-                //  EmailContact.SendContactByEmail(contact);
+                // _emailService.SendContactByEmail(contact);
                 var returnContact = new ContactEmailReturn();
 
                 var lstMessages = new List<ValidationResult>();

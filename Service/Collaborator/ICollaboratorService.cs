@@ -15,5 +15,9 @@ namespace Service.Collaborator
         List<CollaboratorModel> GetCollaborators();
         IPagedList<CollaboratorModel> GetPagedCollaborators(int? page);
         IEnumerable<CollaboratorTypeModel> GetCollaboratorTypes();
+        void CreatePassword(int collaboratorId);
+        void UpdatePassword(CollaboratorModel collaborator);
+        CollaboratorModel GetByEmail(string email);
+        bool IsCollaboratorEmailUnique(CollaboratorModel collaboratorToInsert);
     }
 }

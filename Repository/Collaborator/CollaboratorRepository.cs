@@ -48,5 +48,24 @@ namespace Repository.Collaborator
             return _database.CollaboratorTypes;
         }
 
+        public new void Update(CollaboratorModel collaborator)
+        {
+            _database.Update(collaborator);
+            _database.Entry(collaborator).Property(x => x.Password).IsModified = false;
+            _database.SaveChanges();
+        }
+
+        public void UpdatePassword(CollaboratorModel collaborator)
+        {
+            _database.Update(collaborator);
+            _database.Entry(collaborator).Property(x => x.Name).IsModified = false;
+            _database.Entry(collaborator).Property(x => x.Email).IsModified = false;
+            _database.SaveChanges();
+        }
+
+        public CollaboratorModel GetByEmail(string email)
+        {
+            return _database.Collaborators.Where(collaborator => collaborator.Email == email).AsNoTracking().FirstOrDefault();
+        }
     }
 }

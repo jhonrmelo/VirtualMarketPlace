@@ -8,13 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using Service.Collaborator;
 using Service.Login.Clients;
 using Service.Login.Collaborators;
 using Service.Session;
-
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Reflection;
 
 using VirtualMarketPlace.Repository.Database;
@@ -46,12 +47,21 @@ namespace LojaVirtual
             #region DI Scope for Attributtes
             services.AddScoped<ClientLoginService>();
             services.AddScoped<CollaboratorLoginService>();
+            services.AddScoped<SessionHelper>();
+            services.AddScoped(options =>
+            {
+                return new SmtpClient(Configuration.GetValue<string>("Email:Server"), Configuration.GetValue<int>("Email:Port"))
+                {
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(Configuration.GetValue<string>("Email:ProviderEmail"), Configuration.GetValue<string>("Email:Password")),
+                    EnableSsl = true
+                };
+            });
             #endregion
 
             services.AddMemoryCache();
             services.AddDistributedMemoryCache();
             services.AddSession();
-            services.AddScoped<SessionHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<VirtualMarketPlaceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

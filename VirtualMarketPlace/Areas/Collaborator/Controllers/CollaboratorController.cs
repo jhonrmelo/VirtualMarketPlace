@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Domain.Enums;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Service.Collaborator;
@@ -9,7 +10,7 @@ using X.PagedList;
 namespace VirtualMarketPlace.Areas.Collaborator.Controllers
 {
     [Area("Collaborator")]
-    [CollaboratorAuthorization]
+    [CollaboratorAuthorization(EnumCollaboratorType.Manager)]
     public class CollaboratorController : Controller
     {
         private ICollaboratorService _collaboratorService;
@@ -34,6 +35,10 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
         [HttpPost]
         public IActionResult Create([FromForm] CollaboratorModel collaborator)
         {
+            ModelState.Remove("Password");
+            if (!_collaboratorService.IsCollaboratorEmailUnique(collaborator))
+                ModelState.AddModelError("Email", "We alread have this e-mail in our database!");
+
             if (ModelState.IsValid)
             {
                 _collaboratorService.Create(collaborator);
@@ -41,6 +46,7 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            ViewBag.CollaboratorTypes = _collaboratorService.GetCollaboratorTypes().Select(collaboratorType => new SelectListItem(collaboratorType.Description, collaboratorType.Id.ToString()));
             return View(collaborator);
         }
         [HttpGet]
@@ -54,9 +60,15 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
         [HttpPost]
         public IActionResult Update([FromForm] CollaboratorModel collaborator)
         {
+            ModelState.Remove("Password");
+
+            if (!_collaboratorService.IsCollaboratorEmailUnique(collaborator))
+                ModelState.AddModelError("Email", "We alread have this e-mail in our database!");
+
             if (ModelState.IsValid)
             {
                 _collaboratorService.Update(collaborator);
+
                 TempData["MSG_S"] = "Collaborator updated with success!";
                 return RedirectToAction(nameof(Index));
             }
@@ -68,6 +80,12 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
         {
             _collaboratorService.Delete(id);
             TempData["MSG_S"] = "Collaborator removed!";
+            return Json(new { status = true });
+        }
+        [HttpGet]
+        public IActionResult CreatePassword(int id)
+        {
+            _collaboratorService.CreatePassword(id);
             return Json(new { status = true });
         }
     }

@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@inject Service.Login.Collaborators.CollaboratorLoginService collaboratorService
+<!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
@@ -47,6 +48,16 @@
                                 Customers
                             </a>
                         </li>
+                        @if (collaboratorService.GetCollaborator().CollaboratorTypeId == (int)Domain.Enums.EnumCollaboratorType.Manager)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Collaborator" asp-action="Index">
+                                    <span data-feather="users"></span>
+                                    Collaborators
+                                </a>
+                            </li>
+                        }
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="shopping-cart"></span>
@@ -112,6 +123,8 @@
     <script src="~/resources/lib/feather/feather.js"></script>
     <script src="~/resources/lib/charts/charts.js"></script>
     <script src="~/resources/lib/dashboard/dashboard.js"></script>
+    <script src="~/resources/lib/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="~/Site/js/reusable/sweetAlertReusable.js"></script>
     @RenderSection("scripts", required: false);
 
 </body>

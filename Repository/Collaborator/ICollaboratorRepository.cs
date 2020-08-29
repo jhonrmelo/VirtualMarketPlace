@@ -13,5 +13,7 @@ namespace Repository.Collaborator
         List<CollaboratorModel> GetCollaborators();
         IPagedList<CollaboratorModel> GetPagedCollaborators(int page);
         IEnumerable<CollaboratorTypeModel> GetCollaboratorTypes();
+        void UpdatePassword(CollaboratorModel collaborator);
+        CollaboratorModel GetByEmail(string email);
     }
 }

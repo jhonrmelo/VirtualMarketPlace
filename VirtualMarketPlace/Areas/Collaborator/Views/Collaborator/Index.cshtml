@@ -40,11 +40,12 @@
                         <tr>
                             <th scope="row">@collaborator.Id</th>
                             <td scope="row">@collaborator.Name </td>
-                            <td scope="row">@collaborator.Name</td>
+                            <td scope="row">@collaborator.Email</td>
                             <td scope="row">@collaborator.CollaboratorType.Description</td>
                             <td>
+                                <button onclick="CreatePassword(event,@collaborator.Id)" class="btn btn-primary"><span class="fa fa-cog"></span> Create Password </button>
                                 <a asp-action="Update" asp-route-id="@collaborator.Id" class="btn btn-success"><span class="fa fa-pencil-alt"></span>  </a>
-                                <button id="collaboratorDelete" data-name="@collaborator.Name" onclick="deleteCategory(event, this ,@collaborator.Id)" class="btn btn-danger"> <span class="fa fa-trash"></span> </button>
+                                <button id="collaboratorDelete" data-name="@collaborator.Name" onclick="deleteCollaborator(event, this ,@collaborator.Id)" class="btn btn-danger"> <span class="fa fa-trash"></span> </button>
                             </td>
 
                         </tr>

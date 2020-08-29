@@ -20,9 +20,6 @@ namespace Domain.Models
         [Required(ErrorMessageResourceType = typeof(Message), ErrorMessageResourceName = "MSG_E001")]
         [MinLength(6, ErrorMessageResourceType = typeof(Message), ErrorMessageResourceName = "MSG_E002")]
         public string Password { get; set; }
-        [NotMapped]
-        [Compare("Password", ErrorMessageResourceType = typeof(Message), ErrorMessageResourceName = "MSG_E005")]
-        public string ConfirmedPassword { get; set; }
         [Required]
         public int CollaboratorTypeId { get; set; }
         public CollaboratorTypeModel CollaboratorType { get; set; }

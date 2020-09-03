@@ -13,7 +13,6 @@ using System.Text;
 using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Domain.ViewModels;
 using VirtualMarketPlace.Models;
-using VirtualMarketPlace.Service.Email;
 using VirtualMarketPlace.ViewModels;
 
 namespace VirtualMarketPlace.Controllers
@@ -71,7 +70,7 @@ namespace VirtualMarketPlace.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login([FromForm]LoginViewModel login)
+        public IActionResult Login([FromForm] LoginViewModel login)
         {
             ClientModel loggedClient = _clienteService.Login(login.Email, login.Password);
 
@@ -88,7 +87,7 @@ namespace VirtualMarketPlace.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromForm]ClientModel client)
+        public IActionResult CreateUser([FromForm] ClientModel client)
         {
             if (ModelState.IsValid)
             {
@@ -100,6 +99,14 @@ namespace VirtualMarketPlace.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        [ValidateHTTPReferer]
+        public IActionResult Logout()
+        {
+            _loginservice.Logout();
+            return RedirectToAction("Login", "Home");
         }
         [HttpGet]
         public IActionResult CreateUser()

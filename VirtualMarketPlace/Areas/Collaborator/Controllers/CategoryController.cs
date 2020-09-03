@@ -65,6 +65,7 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
             return View(category);
         }
         [HttpGet]
+        [ValidateHTTPReferer]
         public IActionResult Delete(int id)
         {
             TempData["MSG_S"] = "Category removed!";

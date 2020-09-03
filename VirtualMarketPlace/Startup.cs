@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+
 using Domain.Models;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -8,10 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using Service.Collaborator;
 using Service.Login.Clients;
 using Service.Login.Collaborators;
+using Service.MiddlewareService;
 using Service.Session;
+
 using System;
 using System.Linq;
 using System.Net;
@@ -99,6 +104,8 @@ namespace LojaVirtual
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
+            //Insert of the middleware in the pipeline
+            app.UseMiddleware<ValidateAntiForgeryTokenMiddleware>();
 
             app.UseMvc(routes =>
             {

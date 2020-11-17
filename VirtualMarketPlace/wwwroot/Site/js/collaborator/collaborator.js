@@ -1,6 +1,6 @@
 ﻿
-function deleteCollaborator(e, elem, id) {
-    e.preventDefault();
+function deleteCollaborator(id) {
+    event.preventDefault();
     deleteAction('./Collaborator', 'Collaborator/Delete', id);
 }
 

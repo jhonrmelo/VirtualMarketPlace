@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using LinqKit;
+
+using System.Collections.Generic;
+
 using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Repositories;
+
+using X.PagedList;
 
 namespace Service.User
 {
@@ -34,6 +39,22 @@ namespace Service.User
             return _clientRepository.GetClients();
         }
 
+        public IPagedList<ClientModel> GetPagedClients(int? page, string searchName, string searchEmail)
+        {
+            var predicate = PredicateBuilder.New<ClientModel>();
+
+            //Filters
+            if (!string.IsNullOrEmpty(searchName))
+                predicate.And(x => x.Name.ToUpper().Contains(searchName.Trim().ToUpper()));
+
+            if (!string.IsNullOrEmpty(searchEmail))
+                predicate.And(x => x.Email.ToUpper().Contains(searchEmail.Trim().ToUpper()));
+
+            int indexPage = page ?? 1;
+
+            return _clientRepository.GetPagedClients(indexPage, predicate);
+        }
+
         public ClientModel Login(string Email, string Password)
         {
             return _clientRepository.Login(Email, Password);
@@ -42,6 +63,12 @@ namespace Service.User
         public void Update(ClientModel client)
         {
             _clientRepository.Update(client);
+        }
+        public void ChangeStatus(int id)
+        {
+            var clientToChange = GetClient(id);
+            clientToChange.Status = !clientToChange.Status;
+            _clientRepository.Update(clientToChange);
         }
     }
 }

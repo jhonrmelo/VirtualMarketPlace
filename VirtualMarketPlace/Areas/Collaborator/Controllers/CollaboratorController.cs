@@ -75,6 +75,7 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
 
             return View(collaborator);
         }
+
         [HttpGet]
         [ValidateHTTPReferer]
         public IActionResult Delete(int id)
@@ -83,6 +84,7 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
             TempData["MSG_S"] = "Collaborator removed!";
             return Json(new { status = true });
         }
+
         [HttpGet]
         [ValidateHTTPReferer]
         public IActionResult CreatePassword(int id)

@@ -45,7 +45,7 @@
                             <td>
                                 <button onclick="CreatePassword(event,@collaborator.Id)" class="btn btn-primary"><span class="fa fa-cog"></span> Create Password </button>
                                 <a asp-action="Update" asp-route-id="@collaborator.Id" class="btn btn-success"><span class="fa fa-pencil-alt"></span>  </a>
-                                <button id="collaboratorDelete" data-name="@collaborator.Name" onclick="deleteCollaborator(event, this ,@collaborator.Id)" class="btn btn-danger"> <span class="fa fa-trash"></span> </button>
+                                <button id="collaboratorDelete" data-name="@collaborator.Name" onclick="deleteCollaborator(@collaborator.Id)" class="btn btn-danger"> <span class="fa fa-trash"></span> </button>
                             </td>
 
                         </tr>
@@ -53,8 +53,9 @@
 
                 </tbody>
             </table>
-
         </div>
+
+        @Html.PagedListPager((IPagedList)Model, index => Url.Action("Index", new { index }))
     }
     else
     {

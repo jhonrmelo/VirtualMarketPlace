@@ -46,7 +46,7 @@
                             <td>  @Html.DisplayFor(x => category.FatherCategory.Slug)  </td>
                             <td>
                                 <a asp-action="Update" asp-route-id="@category.Id" class="btn btn-success"><span class="fa fa-pencil-alt"></span>  </a>
-                                <button id="categoryDelete" onclick="deleteCategory(event,@category.Id); " asp-route-id="@category.Id" class="btn btn-danger"> <span class="fa fa-trash"></span> </button>
+                                <button id="categoryDelete" onclick="deleteCategory(@category.Id); " asp-route-id="@category.Id" class="btn btn-danger"> <span class="fa fa-trash"></span> </button>
                             </td>
                         </tr>
                     }

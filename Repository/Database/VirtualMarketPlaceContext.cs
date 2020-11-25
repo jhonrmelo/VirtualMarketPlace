@@ -1,6 +1,8 @@
 ﻿
 using Domain.Models;
+
 using Microsoft.EntityFrameworkCore;
+
 using VirtualMarketPlace.Domain.Models;
 
 namespace VirtualMarketPlace.Repository.Database
@@ -14,6 +16,9 @@ namespace VirtualMarketPlace.Repository.Database
         public DbSet<CollaboratorTypeModel> CollaboratorTypes { get; set; }
         public DbSet<CollaboratorModel> Collaborators { get; set; }
         public DbSet<CategoryModel> Categories { get; set; }
+        public DbSet<ProductModel> Products { get; set; }
+        public DbSet<ImageModel> Images { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

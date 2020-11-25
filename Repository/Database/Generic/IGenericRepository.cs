@@ -9,5 +9,6 @@ namespace Repository.Database.Generic
         void Create(T TModel);
         void Delete(T TModel);
         void Update(T TModel);
+        void DeleteRange(IEnumerable<T> TModel);
     }
 }

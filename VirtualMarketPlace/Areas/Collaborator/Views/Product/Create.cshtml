@@ -1,0 +1,129 @@
+﻿@model Domain.Models.ProductModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Collaborator/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Create Product</h1>
+<div class="text-right">
+    <a asp-action="index" class="btn btn-light"> <span class="fa fa-arrow-circle-left"></span> Get Back </a>
+</div>
+
+<form method="post" asp-action="Create">
+    <div class="card bg-light mt-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="my-3 p-3 white-background rounded shadow-sm ">
+                        <h5 class="bg-light p-2"><i class="fas fa-info-circle"></i> General Information</h5>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" asp-for="CategoryId"></label>
+                                <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories">
+                                    <option value="0"> Selecione</option>
+                                </select>
+                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" asp-for="Name"></label>
+                                <input asp-for="Name" class="form-control" type="text" placeholder="ex: Computer" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" asp-for="Description"></label>
+                                <textarea asp-for="Description" class="form-control" type="text"> </textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-md-6">
+                                <label class="font-weight-bold" asp-for="Value"></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">$</div>
+                                    </div>
+                                    <input asp-for="Value" class="form-control" type="text" placeholder="ex: 3.000" />
+                                    <span asp-validation-for="Value" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="font-weight-bold" asp-for="Quantity"></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">un.</div>
+                                    </div>
+                                    <input asp-for="Quantity" class="form-control" type="number" placeholder="ex: 8" />
+                                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="my-3 p-3 white-background rounded shadow-sm ">
+                        <h5 class="bg-light p-2"> <i class="fas fa-mail-bulk"></i> Post Office Information</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="font-weight-bold" asp-for="Weight"></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">kg</div>
+                                    </div>
+                                    <input asp-for="Weight" class="form-control" type="number" placeholder="ex: 15" />
+                                    <span asp-validation-for="Weight" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="font-weight-bold" asp-for="Width"></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">cm.</div>
+                                    </div>
+                                    <input asp-for="Width" class="form-control" type="number" placeholder="ex: 180" />
+                                    <span asp-validation-for="Width" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-md-6">
+                                <label class="font-weight-bold" asp-for="Height"></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">cm</div>
+                                    </div>
+                                    <input asp-for="Height" class="form-control" type="number" placeholder="ex: 50" />
+                                    <span asp-validation-for="Height" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="font-weight-bold" asp-for="Length"></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">cm.</div>
+                                    </div>
+                                    <input asp-for="Length" class="form-control" type="number" placeholder="ex: 80" />
+                                    <span asp-validation-for="Length" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div>
+                <button type="submit" class="btn btn-success"> <span class="fa fa-save"></span> Save</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+

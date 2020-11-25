@@ -1,12 +1,8 @@
 ﻿using LinqKit;
-
 using Microsoft.Extensions.Configuration;
-
 using Repository.Database.Generic;
-
 using System.Collections.Generic;
 using System.Linq;
-
 using VirtualMarketPlace.Domain.Models;
 using VirtualMarketPlace.Repository.Database;
 

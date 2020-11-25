@@ -88,6 +88,7 @@ namespace Service.Collaborator
             var collaborator = GetByEmail(collaboratorToInsert.Email);
             if ((collaborator != null && collaboratorToInsert.Id == 0) || (collaborator != null && collaborator.Id != collaboratorToInsert.Id))
                 return false;
+
             return true;
         }
     }

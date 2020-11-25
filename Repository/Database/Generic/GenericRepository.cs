@@ -1,4 +1,7 @@
-﻿using VirtualMarketPlace.Repository.Database;
+﻿using System.Collections;
+using System.Collections.Generic;
+
+using VirtualMarketPlace.Repository.Database;
 
 namespace Repository.Database.Generic
 {
@@ -18,6 +21,11 @@ namespace Repository.Database.Generic
         }
 
         public void Delete(T TModel)
+        {
+            _database.Remove(TModel);
+            _database.SaveChanges();
+        }
+        public void DeleteRange(IEnumerable<T> TModel)
         {
             _database.Remove(TModel);
             _database.SaveChanges();

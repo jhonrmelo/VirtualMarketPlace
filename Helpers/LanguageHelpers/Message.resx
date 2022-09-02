@@ -132,4 +132,7 @@
   <data name="MSG_E005" xml:space="preserve">
     <value>The Password and the confirmed password aren't equals</value>
   </data>
+  <data name="MSG_E006" xml:space="preserve">
+    <value>The range of values need to be between {1} and {2}</value>
+  </data>
 </root>

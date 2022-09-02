@@ -1,9 +1,13 @@
 ﻿using Domain.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+
 using Service.Category;
 using Service.PipelineFilters;
+
 using System.Linq;
+
 using X.PagedList;
 
 namespace VirtualMarketPlace.Areas.Collaborator.Controllers
@@ -41,8 +45,8 @@ namespace VirtualMarketPlace.Areas.Collaborator.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Categorias = _categoryService.GetCategories().Select(lcategory => new SelectListItem(lcategory.Name, lcategory.Id.ToString()));
 
+            ViewBag.Categorias = _categoryService.GetCategories().Select(lcategory => new SelectListItem(lcategory.Name, lcategory.Id.ToString()));
             return View();
         }
         [HttpGet]

@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+
 using Service.Session;
+
 using VirtualMarketPlace.Domain.Models;
 
 namespace Service.Login.Clients
@@ -8,6 +10,7 @@ namespace Service.Login.Clients
     {
         private readonly string _key = "Login.Client";
         private SessionHelper _session;
+
         public ClientLoginService(SessionHelper session)
         {
             _session = session;
@@ -18,6 +21,7 @@ namespace Service.Login.Clients
             string jsonClient = JsonConvert.SerializeObject(client);
             _session.Put(_key, jsonClient);
         }
+
         public ClientModel GetClient()
         {
             if (_session.HasKey(_key))

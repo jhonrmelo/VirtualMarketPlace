@@ -104,5 +104,14 @@ namespace Helpers.LanguageHelpers {
                 return ResourceManager.GetString("MSG_E005", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The range of values need to be between {1} and {2}.
+        /// </summary>
+        public static string MSG_E006 {
+            get {
+                return ResourceManager.GetString("MSG_E006", resourceCulture);
+            }
+        }
     }
 }

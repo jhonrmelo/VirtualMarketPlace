@@ -27,7 +27,7 @@ namespace VirtualMarketPlace.Service.Email
                 From = new MailAddress(email),
                 Subject = "Contact - Jonathan's Market Place",
                 Body = messageBody,
-                IsBodyHtml = true
+                IsBodyHtml = true,
             };
             message.To.Add(email);
 

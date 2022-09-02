@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\resources\lib\sweetalert\" />
+    <Folder Include="wwwroot\uploads\temp\" />
   </ItemGroup>
 
 </Project>
